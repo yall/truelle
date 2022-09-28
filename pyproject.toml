@@ -1,12 +1,13 @@
 [tool.poetry]
 name = "truelle"
-version = "0.1.0"
+version = "0.0.1"
 description = "A tiny web scraping library"
 authors = ["Jonathan Geslin <jonathan.geslin@gmail.com>"]
 license = "MIT"
 packages = [
     { include = "truelle" }
 ]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
