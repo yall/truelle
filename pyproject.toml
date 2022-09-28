@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "A tiny web scraping library"
 authors = ["Jonathan Geslin <jonathan.geslin@gmail.com>"]
 license = "MIT"
+packages = [
+    { include = "truelle" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
