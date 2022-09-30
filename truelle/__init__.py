@@ -160,8 +160,13 @@ class Downloader:
         - Using requests as HTTP client.
         - Cookies: using a requests Session to store cookies
     """
-    def __init__(self):
+    def __init__(self, settings={}):
         self._session = requests.Session()
+        self._session.proxies = {
+            "http": settings.get("HTTP_PROXY"),
+            "https": settings.get("HTTPS_PROXY"),
+        }
+
         
     def _build_response(self, req: Request, res: requests.Response) -> Response:
         return Response(
@@ -225,7 +230,7 @@ class Crawler:
         self._settings = settings
         self._scheduler = Scheduler()
         self._middleware = MiddlewareChain(
-            Downloader(),
+            Downloader(settings),
             [ 
                 DeduplicationMiddleware(settings),
                 HttpCacheMiddleware(settings) 
